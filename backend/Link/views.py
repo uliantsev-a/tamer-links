@@ -48,5 +48,5 @@ class LinkViewSet(
     def get_queryset(self):
         queryset = Resource.objects
         if self.action == 'list':
-            return queryset.filter(session=self.request.session.session_key)
+            return queryset.filter(session=self.request.session.session_key).order_by('-created')
         return queryset.all()

@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from .models import Resource
 from .serializers import ResourceSerializer
+from .utils import StandardResultsSetPagination
 
 
 class LinkViewSet(
@@ -15,6 +16,7 @@ class LinkViewSet(
     viewsets.GenericViewSet
 ):
     serializer_class = ResourceSerializer
+    pagination_class = StandardResultsSetPagination
     lookup_field = 'short_link'
 
     def list(self, request, *args, **kwargs):

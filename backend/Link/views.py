@@ -1,6 +1,6 @@
 from rest_framework import mixins, viewsets, status
 from rest_framework.response import Response
-from django.shortcuts import redirect
+from django.http import QueryDict
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from django.conf import settings
@@ -23,7 +23,11 @@ class LinkViewSet(
         return super().list(request, *args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        data = request.data.dict()
+        if isinstance(request.data, QueryDict):
+            data = request.data.dict()
+        else:
+            data = request.data
+
         if not request.session.session_key:
             request.session.save()
 

@@ -20,8 +20,6 @@ class Test(TestCase):
         test_resource.created = test_resource.created - timedelta(days=31)
         test_resource.save()
 
-        # Resource.objects.bu
-
         self.assertTrue(Resource.objects.filter(short_link=test_resource.short_link).exists())
         self.assertTrue(Resource.objects.filter(short_link=test_resource2.short_link).exists())
 

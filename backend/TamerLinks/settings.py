@@ -187,8 +187,8 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
-        'celery': {
-            'handlers': ['celery_file', 'console'],
+        'django_celery': {
+            'handlers': ['celery_file'],
             'level': 'ERROR',
             'propagate': True,
         },
@@ -217,6 +217,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 LENGTH_SHORT_FORM = 6
 
 # settings in seconds
-LIMIT_STORAGE = 3600 * 24 * 30
+
 DEFAULT_CACHE_PAGE = 60 * 60 * 2
-CLEANING_TASK_PERIOD = 3600 * 24 * 30
+
+# how old time should be after create for delete link
+LIMIT_STORAGE = 3600 * 24 * 30
+
+# how often worker will start the clear script
+CLEANING_TASK_PERIOD = {
+    'days': 30
+}

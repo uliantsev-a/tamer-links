@@ -12,7 +12,7 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: '/api',
+      path: '/(api|docs)',
       abstract: true
       // pass on to server
     },

@@ -15,6 +15,25 @@ class LinkViewSet(
     mixins.CreateModelMixin,
     viewsets.GenericViewSet
 ):
+    """
+    retrieve:
+    Return the original link by short_record or nothing with code 404.
+    Example http://<host>/api/link/<short_record>/.
+    It use cache from Redis when repeat request.
+    Cache limit time from DEFAULT_CACHE_PAGE
+
+    list:
+    Return a list of all links on this session.
+    Result split of paginate and getting query options for this.
+    Example http://<host>/api/link/?page=2
+    Pagination response can see in ./utils.py/StandardResultsSetPagination
+
+    create:
+    Create a new link between original and short URL.
+    Response the dict with base fields the Resource.
+    Receive original URL and custom short record (not required).
+    """
+
     serializer_class = ResourceSerializer
     pagination_class = StandardResultsSetPagination
     lookup_field = 'short_link'

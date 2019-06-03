@@ -42,8 +42,8 @@ class LinkViewSet(
     @method_decorator(cache_page(settings.DEFAULT_CACHE_PAGE))
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
-        response = redirect(instance.source)
-        return response
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
 
     def get_queryset(self):
         queryset = Resource.objects

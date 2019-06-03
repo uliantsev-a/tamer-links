@@ -14,7 +14,7 @@ class Test(TestCase):
 
     def test_ignore_session_params(self):
         data = {
-            'source': 'sourceLink',
+            'source': 'http://sourceLink.com/',
             'short_link': 'shortLink',
             'session': 'fakeSession',
         }
@@ -32,3 +32,22 @@ class Test(TestCase):
         resource = Resource.objects.get(short_link=response.data['short_link'])
         self.assertNotEqual(data['session'], resource.session.session_key)
         self.assertEqual(wsgi_request.session.session_key, resource.session.session_key)
+
+    def test_validation_url(self):
+        data = {
+            'source': 'sourceLink',
+            'short_link': 'shor',
+            'session': 'fakeSession',
+        }
+
+        factory = APIRequestFactory()
+        url = reverse('link-list')
+
+        wsgi_request = factory.post(url, data=data)
+        wsgi_request.session = self.session
+
+        list_view = LinkViewSet.as_view({'post': 'create'})
+        response = list_view(wsgi_request)
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data['source'][0].code, 'invalid')
+        self.assertEqual(response.data['short_link'][0].code, 'min_length')

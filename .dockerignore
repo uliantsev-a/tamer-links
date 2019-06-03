@@ -1,0 +1,10 @@
+.git
+.idea
+.gitignore
+.gitattributes
+__pycache__
+Dockerfile
+node_modules
+migrations
+README.md
+*.sqlite3

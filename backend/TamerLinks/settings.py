@@ -27,8 +27,16 @@ SECRET_KEY = '@v=(qt-4$2oc5x4@qxvz$w^f3u%ycag6vpbg31$n5z4u@$^r!y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'FALSE') == 'TRUE'
 
-ALLOWED_HOSTS = ['172.19.0.1', 'localhost', '127.0.0.1', 'api']
+if DEBUG:
+    ALLOWED_HOSTS = ['*']
+else:
+    ALLOWED_HOSTS = ['172.19.0.1', 'localhost', '127.0.0.1', 'api']
 
+# CORS Config
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = False
+# CORS_ORIGIN_WHITELIST = ['https://172.19.0.1', 'https://localhost',
+#                          'https://127.0.0.1', 'https://api']
 
 # Application definition
 

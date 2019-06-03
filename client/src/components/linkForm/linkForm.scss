@@ -1,0 +1,78 @@
+.create-form {
+  margin-top: 20px;
+}
+.form-item {
+  position: relative;
+  margin: 0 10px 20px 0;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  height: 35px;
+}
+.form-item.source {
+  flex: 1;
+}
+.form-item__placeholder {
+  position: absolute;
+  top: 0;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  //width: 100%;
+  color: $gray;
+  font-size: 13px;
+  user-select: none;
+}
+.form-item__placeholder-text {
+  padding-top: 3px;
+  transition: 0.25s;
+  cursor: text;
+  white-space: nowrap;
+}
+.--focus .form-item__placeholder-text, .--fill .form-item__placeholder-text {
+  position: absolute;
+  top: -5px;
+  background-color: #fff;
+  padding: 0 5px;
+  left: 45px;
+  font-size: 12px;
+}
+.form-item__error {
+  position: absolute;
+  top: 75%;
+  left: 45px;
+  background-color: #fff;
+  padding: 0 5px;
+  color: $error-color;
+  font-size: 11px;
+  text-align: end;
+}
+
+.form-item__input {
+  //width: 100%;
+  height: 100%;
+  padding-left: 5px;
+}
+
+.form-item__button {
+  width: 100px;
+  height: 35px;
+  background-color: $main-color;
+  border: 0;
+  color: white;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.group-form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-non_field_errors {
+  padding: 0 5px;
+  color: #BD3D34;
+  font-size: 11px;
+  margin: 0 0 10px 0;
+  display: block;
+}

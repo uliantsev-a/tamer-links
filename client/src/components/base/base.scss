@@ -1,0 +1,36 @@
+.content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  background-color: white;
+  padding: 20px 25px;
+  margin: auto;
+  //margin: 0 -15px;
+}
+
+.header {
+  max-width: 1024px;
+  background-color: white;
+  padding: 20px 25px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  max-width: 1024px;
+  background-color: white;
+  padding: 5px 25px;
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}

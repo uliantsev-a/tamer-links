@@ -1,5 +1,7 @@
-## Currencies monitor
-The simple app is similar to __bit.ly__ or other the service for making short links from original URLs 
+## TamerLinks   
+The simple app for link reduction. It's similar to __bit.ly__  
+or other the service for making short links from original URLs 
+
 
 App include next option:   
 - Celery worker periodic delete old resources (links)  
